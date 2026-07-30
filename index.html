@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapat Kerja Cabang Tahun 2026 - Gerakan Pramuka Kwarcab Jakarta Utara</title>
+    <!-- Favicon menggunakan Logo Semboyan sesuai permintaan -->
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/19ZF7FLsknvEP7M2GQfKhmZsVhpA1iGuR=s800">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            color: #333;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #560bad;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            box-sizing: border-box;
+            flex-wrap: wrap;
+            gap: 10px;
+            z-index: 50;
+        }
+        .header-left-info {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .header-title-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            flex: 1;
+            text-align: center;
+        }
+        .header-logos {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .header-logos img {
+            height: 32px;
+            width: auto;
+            object-fit: contain;
+        }
+        h1 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            background: linear-gradient(to bottom, #fff7cc 0%, #ffcc00 50%, #cca300 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.4));
+        }
+        .header-right-contact {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .header-right-contact svg {
+            width: 14px;
+            height: 14px;
+            fill: #ffcc00;
+        }
+
+        .slider-container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            margin: 0;
+            background-color: #111;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-running-text {
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            width: 100%;
+            z-index: 5;
+            pointer-events: none;
+        }
+        .slide-running-text marquee {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 14px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9), -1px -1px 2px rgba(0, 0, 0, 0.9);
+        }
+
+        /* --- NAVIGASI & MENU UTAMA --- */
+        nav {
+            background-color: #560bad;
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center;
+            position: relative;
+            z-index: 9999;
+            box-sizing: border-box;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropbtn, nav a {
+            color: white;
+            padding: 12px 14px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            background-color: #560bad;
+            border: none;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            height: 44px;
+        }
+        nav a:hover, .dropdown:hover .dropbtn, nav a.active, .dropdown.active .dropbtn {
+            background-color: #f97316;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #560bad;
+            min-width: 220px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.4);
+            z-index: 10000;
+            text-align: left;
+            left: 0;
+            top: 100%;
+            max-height: 350px;
+            overflow-y: auto;
+        }
+        .dropdown.show .dropdown-content {
+            display: block; 
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            font-weight: normal;
+            font-size: 13px;
+            background-color: #560bad;
+            height: auto;
+            text-align: left;
+            justify-content: flex-start;
+            white-space: normal;
+        }
+        .dropdown-content a:hover {
+            background-color: #f97316;
+        }
+
+        /* --- LAYOUT UTAMA 4 KOLOM --- */
+        .content-grid {
+            max-width: 95%;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 2;
+            align-items: stretch;
+        }
+
+        /* Kotak Visi Misi disesuaikan agar sama persis dengan tinggi frame video rasio 16:9 */
+        .grid-col {
+            background: #ffffff;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border-top: 4px solid #560bad;
+            aspect-ratio: 16 / 9;
+        }
+
+        .grid-col-media {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            background: transparent;
+        }
+
+        /* --- PENGATURAN VIDEO AGAR PROPOSIONAL --- */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%) scale(1.2); 
+            border: 0;
+            pointer-events: none;
+        }
+
+        .card-content {
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            height: 100%;
+            overflow: hidden;
+        }
+        .card-content h2 {
+            color: #0044cc;
+            margin-top: 0;
+            font-size: 12px;
+            text-align: center;
+            margin-bottom: 4px;
+            line-height: 1.2;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .card-content h3 {
+            color: #f97316;
+            font-size: 11px;
+            margin-top: 4px;
+            margin-bottom: 2px;
+            text-align: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        /* Area teks Visi Misi yang fleksibel dan bisa di-scroll ke bawah */
+        .scrollable-text {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-right: 4px;
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+        
+        /* Mempercantik Scrollbar */
+        .scrollable-text::-webkit-scrollbar {
+            width: 4px;
+        }
+        .scrollable-text::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .scrollable-text::-webkit-scrollbar-thumb {
+            background: #560bad;
+            border-radius: 4px;
+        }
+        .scrollable-text::-webkit-scrollbar-thumb:hover {
+            background: #f97316;
+        }
+
+        .card-content p {
+            font-size: 10.5px;
+            line-height: 1.3;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 6px;
+            text-align: justify;
+        }
+
+        /* --- PENGATURAN MAP AGAR PROPOSIONAL --- */
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .map-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        footer {
+            background-color: #560bad;
+            color: white;
+            padding: 40px 20px 25px 20px;
+            margin-top: 40px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 2;
+        }
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 30px;
+        }
+        .footer-col h3 {
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .footer-col p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #e2d9f3;
+            margin-bottom: 12px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .social-icons a:hover {
+            background-color: #f97316;
+        }
+        .social-icons svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+        .feedback-btn {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 6px;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+        .feedback-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: white;
+        }
+        .feedback-btn .klik-box {
+            background-color: white;
+            color: #560bad;
+            font-weight: bold;
+            font-size: 12px;
+            padding: 6px 10px;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .feedback-text {
+            font-size: 11px;
+            line-height: 1.2;
+            color: #e2d9f3;
+        }
+        .footer-bottom-line {
+            max-width: 1100px;
+            margin: 30px auto 0 auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #d1c4e9;
+        }
+
+        /* --- MEDIA QUERY UNTUK TABLET DAN HP --- */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-col {
+                aspect-ratio: auto;
+                height: 250px;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 12px;
+            }
+            .header-left-info, .header-right-contact {
+                width: 100%;
+                justify-content: center;
+            }
+            .header-title-container {
+                position: static;
+                transform: none;
+                flex-direction: column;
+                gap: 6px;
+                margin: 5px 0;
+            }
+            h1 {
+                font-size: 15px;
+                white-space: normal;
+            }
+            .slider-container {
+                height: 250px;
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .grid-col {
+                height: auto;
+                aspect-ratio: 16 / 9;
+            }
+            nav {
+                flex-direction: column;
+            }
+            .dropdown, .dropbtn, nav a {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .dropdown-content {
+                position: relative;
+                width: 100%;
+                box-shadow: none;
+                background-color: #45088a;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left-info">
+            <span id="clock">00:00:00</span>
+        </div>
+        <div class="header-title-container">
+            <div class="header-logos">
+                <img src="https://lh3.googleusercontent.com/d/1tsVxt9NmmveOgWoUtFE7wgnzr9b_gYIF=s800" alt="Logo Pramuka">
+                <img src="https://lh3.googleusercontent.com/d/1ZYduP8oTACeAAg9VV2UxBh3o9UX5B_nm=s800" alt="Logo Kwarcab Jakarta Utara">
+            </div>
+            <h1>RAPAT KERJA CABANG TAHUN 2026</h1>
+        </div>
+        <div class="header-right-contact">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <span>Tlpn/Fax : (021) 4401769</span>
+        </div>
+    </header>
+
+    <div class="slider-container">
+        <div class="slide active"><img src="https://lh3.googleusercontent.com/d/1lCdgMcGuuMAWmwUisQ_1RQcHW3pg5XyG=s1600" alt="Kegiatan 1"></div>
+        <div class="slide"><img src="https://lh3.googleusercontent.com/d/1YoWyzXxa6YHXMUsYwhWWXnJ6XD-HCA6t=s1600" alt="Kegiatan 2"></div>
+        <div class="slide"><img src="https://lh3.googleusercontent.com/d/13hfkK5WIiu3fqqi0BF5j4ZAqKeozNipO=s1600" alt="Kegiatan 3"></div>
+        <div class="slide"><img src="https://lh3.googleusercontent.com/d/1fRdT74dZM85PCVY6RpM-nbDjz-vfsOHJ=s1600" alt="Kegiatan 4"></div>
+        <div class="slide"><img src="https://lh3.googleusercontent.com/d/1KM9w3D1yZPItZ0Ue7S0kJ32fo-d71bIG=s1600" alt="Kegiatan 5"></div>
+        <div class="slide"><img src="https://lh3.googleusercontent.com/d/17n0RLFYchOcobAajBiVdwT5_QUUtjDdd=s1600" alt="Kegiatan 6"></div>
+        <div class="slide"><img src="https://lh3.googleusercontent.com/d/1AjBi2Df6-mvkJLwiEfBoOTN1RhXkrvM9=s1600" alt="Kegiatan 7"></div>
+
+        <div class="slide-running-text">
+            <marquee scrollamount="6">Satyaku Kudarmakan Darmaku Kubaktikan --- Sinergi Pramuka Jakarta Utara yang Adaptif, Inovatif, Berkarakter Untuk Mewujudkan Pramuka Mandiri dan Ketahanan Pangan serta Lingkungan yang Produktif.</marquee>
+        </div>
+    </div>
+
+    <!-- MENU UTAMA DI ATAS -->
+    <nav>
+        <a href="#" class="active">Beranda</a>
+        
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown(event, this)">Profil ▼</button>
+            <div class="dropdown-content">
+                <a href="#">Profil Kwarcab Jakarta Utara</a>
+                <a href="#">Pengurus Kwarcab</a>
+                <a href="#">Struktur Pengurus Kwarcab</a>
+                <a href="#">Data Potensi Gerakan Pramuka</a>
+                <a href="#">Data Inventaris</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown(event, this)">Acara ▼</button>
+            <div class="dropdown-content">
+                <a href="#">Upacara Pembukaan</a>
+                <a href="#">Upacara Penutupan</a>
+                <a href="#">Acara Persidangan</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown(event, this)">Sambutan & Laporan ▼</button>
+            <div class="dropdown-content">
+                <a href="#">Sambutan Ka. Mabicab</a>
+                <a href="#">Sambutan Ka. Sudin</a>
+                <a href="#">Sambutan Ka. Kwarcab</a>
+                <a href="#">Laporan Ka. Panlak</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown(event, this)">Administrasi ▼</button>
+            <div class="dropdown-content">
+                <a href="#">SK Panitia</a>
+                <a href="#">Mandat Peserta</a>
+                <a href="#">Biodata Peserta</a>
+                <a href="#">Foto Peserta</a>
+                <a href="#">Absen Kehadiran</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown(event, this)">Jukran / Aturan ▼</button>
+            <div class="dropdown-content">
+                <a href="#">AD/ART GP</a>
+                <a href="#">Jukran Kwarcab</a>
+                <a href="#">Jukran Kwarran</a>
+                <a href="#">Jukran Saka</a>
+                <a href="#">Pergub No. 561</a>
+                <a href="#">Ingub No. 5</a>
+                <a href="#">Aturan Ketukan</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown(event, this)">Persidangan ▼</button>
+            <div class="dropdown-content">
+                <a href="#">Konsideran Rakercab</a>
+                <a href="#">Pembagian Komisi</a>
+                <a href="#">Laporan Kegiatan</a>
+                <a href="#">Laporan Keuangan</a>
+                <a href="#">Inventaris</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown(event, this)">Paparan Bidang ▼</button>
+            <div class="dropdown-content">
+                <a href="#">Paparan Bidang Orgamen</a>
+                <a href="#">Paparan Bidang Keuangan</a>
+                <a href="#">Paparan Bidang Binawasa</a>
+                <a href="#">Paparan Bidang Binamuda</a>
+                <a href="#">Paparan Bidang Abdimas PP</a>
+                <a href="#">Paparan Bidang HAL & PPBN</a>
+                <a href="#">Paparan Bidang Sakoma</a>
+                <a href="#">Paparan Bidang KAI</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown(event, this)">Pembahasan Komisi ▼</button>
+            <div class="dropdown-content">
+                <a href="#">Pembahasan Komisi A</a>
+                <a href="#">Pembahasan Komisi B</a>
+                <a href="#">Pembahasan Komisi C</a>
+                <a href="#">Pembahasan Komisi D</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown(event, this)">Video ▼</button>
+            <div class="dropdown-content">
+                <a href="#">Dokumentasi Kegiatan</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- KONTROL GRID UTAMA 4 KOLOM -->
+    <div class="content-grid">
+        <div class="grid-col-media">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/-AQQXodkL_s?autoplay=1&mute=1&loop=1&playlist=-AQQXodkL_s&controls=0&showinfo=0&rel=0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="grid-col">
+            <div class="card-content">
+                <h2>KWARTIR CABANG JAKARTA UTARA</h2>
+                
+                <!-- Area Teks dengan Scrollbar Vertikal yang Pas -->
+                <div class="scrollable-text">
+                    <h3>VISI</h3>
+                    <p>"Mewujudkan Anggota Gerakan Pramuka Jakarta Utara Yang Relevan Sesuai Kebutuhan Zaman Untuk Melakukan Perubahan Agar Menjadi Lebih Baik Dalam Kehidupannya Berdasarkan Pancasila, Trisatya dan Dasa Dharma."</p>
+
+                    <h3>MISI</h3>
+                    <p>Mengarahkan dan Menjadikan Pramuka Jakarta Utara Sebagai Agent of Change, (Pelopor Pembaharu) Yang Penuh Inovatif, Relevan, Bersinergi, Enerjik, Aktif, Kreatif. Berguna Bagi Bangsa, Negara, Masyarakat Indonesia sesuai marwah Gerakan Pramuka yang berkarakter, berkebangsaan dan Memiliki Kecakapan Hidup.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-col-media">
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.852084795325!2d106.9404!3d-6.1153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6a1ffa363294c7%3A0x8e833fa58a69a489!2sJl.%20Madya%20Kebantenan%20No.45%2C%20RT.8%2FRW.2%2C%20Semper%20Timur%2C%20Kec.%20Cilincing%2C%20Jkt%20Utara!5e0!3m2!1sid!2sid!4v1710000000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+        <div class="grid-col-media">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/Djli2IjqtWg?autoplay=1&mute=1&loop=1&playlist=Djli2IjqtWg&controls=0&showinfo=0&rel=0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>KWARCAB JAKARTA UTARA</h3>
+                <p>Kwarcab (Kwartir Cabang Gerakan Pramuka) di tingkat kabupaten/kota adalah memimpin serta mengendalikan organisasi dan kegiatan kepramukaan, membina kwartir ranting (kwarran), serta mengadakan kerja sama dengan pemerintah daerah dan masyarakat.</p>
+            </div>
+            <div class="footer-col">
+                <h3>SEKRETARIAT</h3>
+                <p>Jl. Madya Kebantenan No.45 8, RT.8/RW.2, Semper Timur, Kec. Cilincing, Jakarta Utara, Daerah Khusus Ibukota Jakarta 14130</p>
+                <p>Email : Kwarrcabju@gmail.com<br>Tlpn/Fax : (021) 4401769</p>
+            </div>
+            <div class="footer-col">
+                <h3>MEDIA SOSIAL</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/pages/Kwartir%20Cabang%20Jakarta%20Utara/455249321173875/#" target="_blank" title="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/kwarcabju1924/" target="_blank" title="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@kwarcabju6728" target="_blank" title="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@updateterkini.net/video/7385751393283394821" target="_blank" title="TikTok">
+                        <svg viewBox="0 0 24 24"><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002-.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.853 4.853 0 0 1-1.003-.104z"/></svg>
+                    </a>
+                    <a href="https://pramuka-kwarcabju.org" target="_blank" title="Website Resmi">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm7.93 9h-3.13a15.88 15.88 0 0 0-1.01-5.03A8.032 8.032 0 0 1 19.93 11zM12 4.07c1.1 1.48 1.93 3.32 2.34 4.93H9.66c.41-1.61 1.24-3.45 2.34-4.93zM4.07 13h3.13c.27 1.79.74 3.51 1.01 5.03A8.032 8.032 0 0 1 4.07 13zm0-2a8.032 8.032 0 0 1 4.14-5.03C7.94 7.49 7.47 9.21 7.2 11H4.07zm3.16 7.03c.31-1.55.77-3.23 1.01-5.03h7.52c.24 1.8.7 3.48 1.01 5.03a8.053 8.053 0 0 1-9.54 0zm11.53-7.03h-3.13c-.27-1.79-.74-3.51-1.01-5.03a8.032 8.032 0 0 1 4.14 5.03z"/></svg>
+                    </a>
+                    <a href="mailto:Kwarrcabju@gmail.com" title="Kirim Email">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                </div>
+                <a href="https://wa.me/628128517172?text=Halo%20Kwarcab%20Jakarta%20Utara,%20saya%20ingin%20menyampaikan%20saran%20atau%20masukan:" target="_blank" class="feedback-btn">
+                    <span class="klik-box">klik di sini</span>
+                    <span class="feedback-text">untuk menyampaikan saran<br>atau masukan kepada kami</span>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom-line">
+            setegar karang di pantai utara @ 2026
+        </div>
+    </footer>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+            const dateStr = now.toLocaleDateString('id-ID', options);
+            document.getElementById('clock').innerHTML = `${dateStr}, ${hours}:${minutes}:${seconds} WIB`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function nextSlide() {
+            slides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].classList.add('active');
+        }
+
+        setInterval(nextSlide, 4000);
+
+        function toggleDropdown(event, element) {
+            event.stopPropagation();
+            const parentDropdown = element.parentElement;
+            
+            document.querySelectorAll('.dropdown').forEach(item => {
+                if (item !== parentDropdown) {
+                    item.classList.remove('show');
+                }
+            });
+
+            parentDropdown.classList.toggle('show');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                document.querySelectorAll('.dropdown').forEach(item => {
+                    item.classList.remove('show');
+                });
+            }
+        }
+    </script>
+</body>
+</html>
