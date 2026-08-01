@@ -416,38 +416,6 @@ marquee{display:block;margin:0;padding:2px 0;background:transparent;line-height:
 }
 
 
-/* REVISI 29: framing slider lebih proporsional, tetap full kiri-kanan */
-.slider,
-.slideshow,
-.carousel{
-    overflow:hidden !important;
-}
-
-.slide img,
-.slider img,
-.slideshow img,
-.carousel img,
-.slider-item img,
-.carousel-item img,
-.mySlides img{
-    width:100% !important;
-    height:100% !important;
-    object-fit:cover !important;
-    object-position:center 32% !important;
-}
-
-/* Foto tambahan yang cenderung tinggi: fokus lebih ke area wajah */
-.slide img[src*="slide-tambahan-"],
-.slider img[src*="slide-tambahan-"],
-.slideshow img[src*="slide-tambahan-"],
-.carousel img[src*="slide-tambahan-"],
-.slider-item img[src*="slide-tambahan-"],
-.carousel-item img[src*="slide-tambahan-"],
-.mySlides img[src*="slide-tambahan-"]{
-    object-position:center 22% !important;
-}
-
-
 /* REVISI 30 - PENCARIAN + ASISTEN AI RAKERCAB */
 .site-header{position:relative !important}
 .ai-search-btn{
@@ -782,8 +750,8 @@ marquee{display:block;margin:0;padding:2px 0;background:transparent;line-height:
 <!-- REVISI 43: AREA KONTEN 4 KOLOM -->
 <section class="rakercab-feature-row">
   <div class="feature-box feature-video">
-    <iframe
-      src="https://www.youtube-nocookie.com/embed/-AQQXodkL_s?autoplay=1&mute=1&loop=1&playlist=-AQQXodkL_s&controls=0&disablekb=1&playsinline=1&rel=0"
+    <iframe id="ytVideo1"
+      src="https://www.youtube.com/embed/-AQQXodkL_s?autoplay=1&mute=1&loop=1&playlist=-AQQXodkL_s&controls=0&disablekb=1&playsinline=1&rel=0&enablejsapi=1"
       title="Video Kwarcab Jakarta Utara 1"
       frameborder="0"
       allow="autoplay; encrypted-media; picture-in-picture"
@@ -803,8 +771,8 @@ marquee{display:block;margin:0;padding:2px 0;background:transparent;line-height:
   </div>
 
   <div class="feature-box feature-video">
-    <iframe
-      src="https://www.youtube-nocookie.com/embed/Djli2IjqtWg?autoplay=1&mute=1&loop=1&playlist=Djli2IjqtWg&controls=0&disablekb=1&playsinline=1&rel=0"
+    <iframe id="ytVideo2"
+      src="https://www.youtube.com/embed/Djli2IjqtWg?autoplay=1&mute=1&loop=1&playlist=Djli2IjqtWg&controls=0&disablekb=1&playsinline=1&rel=0&enablejsapi=1"
       title="Video Kwarcab Jakarta Utara 2"
       frameborder="0"
       allow="autoplay; encrypted-media; picture-in-picture"
@@ -1049,7 +1017,44 @@ document.querySelectorAll('[data-page]').forEach(link=>{
 
 
 
+<script>
+/* REVISI 46 - FORCE AUTOPLAY MUTE + LOOP */
+(function(){
+  var players=[];
+  window.onYouTubeIframeAPIReady=function(){
+    ['ytVideo1','ytVideo2'].forEach(function(id){
+      var p=new YT.Player(id,{
+        events:{
+          'onReady':function(e){
+            e.target.mute();
+            e.target.setVolume(0);
+            e.target.playVideo();
+          },
+          'onStateChange':function(e){
+            if(e.data===YT.PlayerState.ENDED){
+              e.target.seekTo(0,true);
+              e.target.playVideo();
+            }
+          }
+        }
+      });
+      players.push(p);
+    });
+  };
+  var s=document.createElement('script');
+  s.src='https://www.youtube.com/iframe_api';
+  document.head.appendChild(s);
 
+  /* Browser may delay autoplay while page is loading. Retry after load. */
+  window.addEventListener('load',function(){
+    setTimeout(function(){
+      players.forEach(function(p){
+        try{p.mute();p.setVolume(0);p.playVideo();}catch(e){}
+      });
+    },1200);
+  });
+})();
+</script>
 
 </body>
 </html>
