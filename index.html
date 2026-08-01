@@ -784,8 +784,8 @@ marquee{display:block;margin:0;padding:2px 0;background:transparent;line-height:
 <!-- REVISI 43: AREA KONTEN 4 KOLOM -->
 <section class="rakercab-feature-row">
   <div class="feature-box feature-video">
-    <iframe id="ytVideo1"
-      src="https://www.youtube.com/embed/-AQQXodkL_s?autoplay=1&mute=1&loop=1&playlist=-AQQXodkL_s&controls=0&disablekb=1&playsinline=1&rel=0&enablejsapi=1"
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/-AQQXodkL_s?autoplay=1&mute=1&loop=1&playlist=-AQQXodkL_s&controls=0&disablekb=1&playsinline=1&rel=0"
       title="Video Kwarcab Jakarta Utara 1"
       frameborder="0"
       allow="autoplay; encrypted-media; picture-in-picture"
@@ -805,8 +805,8 @@ marquee{display:block;margin:0;padding:2px 0;background:transparent;line-height:
   </div>
 
   <div class="feature-box feature-video">
-    <iframe id="ytVideo2"
-      src="https://www.youtube.com/embed/Djli2IjqtWg?autoplay=1&mute=1&loop=1&playlist=Djli2IjqtWg&controls=0&disablekb=1&playsinline=1&rel=0&enablejsapi=1"
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/Djli2IjqtWg?autoplay=1&mute=1&loop=1&playlist=Djli2IjqtWg&controls=0&disablekb=1&playsinline=1&rel=0"
       title="Video Kwarcab Jakarta Utara 2"
       frameborder="0"
       allow="autoplay; encrypted-media; picture-in-picture"
@@ -1013,7 +1013,7 @@ document.querySelectorAll('[data-page]').forEach(link=>{
     {keys:['alamat','sekretariat','lokasi'], menu:null, text:'Sekretariat Kwarcab Jakarta Utara: Jl. Madya Kebantenan No.45 8, RT.8/RW.2, Semper Tim., Kec. Cilincing, Jakarta Utara 14130.'},
     {keys:['website','web site'], menu:null, text:'Website Kwarcab Jakarta Utara: www.pramuka-kwarcabju.org.'},
     {keys:['email'], menu:null, text:'Email Kwarcab Jakarta Utara: Kwarrcabju@gmail.com.'},
-    {keys:['saran','masukan','whatsapp','wa'], menu:null, text:'Untuk menyampaikan saran atau masukan, gunakan tombol “klik di sini” pada bagian footer website yang terhubung ke WhatsApp Kwarcab.'}
+    {keys:['saran','masukan','whatsapp','wa'], menu:null, text:'Untuk menyampaikan saran atau masukan, gunakan tombol “klik di sini” pada bagian footer website yang terhubung ke WhatsApp Kwarcab.'},
     {keys:['ketetapan','ketetapan rakercab'], menu:'Ketetapan', text:'Dokumen pada menu Ketetapan terdiri dari Konsideran, Berita Acara, dan Progja 2026-2027.'},
     {keys:['media','video','foto','photo','galeri'], menu:'Media', text:'Dokumentasi Rakercab tersedia pada menu Media, dengan sub menu Video dan Foto.'},
   ];
@@ -1051,44 +1051,7 @@ document.querySelectorAll('[data-page]').forEach(link=>{
 
 
 
-<script>
-/* REVISI 46 - FORCE AUTOPLAY MUTE + LOOP */
-(function(){
-  var players=[];
-  window.onYouTubeIframeAPIReady=function(){
-    ['ytVideo1','ytVideo2'].forEach(function(id){
-      var p=new YT.Player(id,{
-        events:{
-          'onReady':function(e){
-            e.target.mute();
-            e.target.setVolume(0);
-            e.target.playVideo();
-          },
-          'onStateChange':function(e){
-            if(e.data===YT.PlayerState.ENDED){
-              e.target.seekTo(0,true);
-              e.target.playVideo();
-            }
-          }
-        }
-      });
-      players.push(p);
-    });
-  };
-  var s=document.createElement('script');
-  s.src='https://www.youtube.com/iframe_api';
-  document.head.appendChild(s);
 
-  /* Browser may delay autoplay while page is loading. Retry after load. */
-  window.addEventListener('load',function(){
-    setTimeout(function(){
-      players.forEach(function(p){
-        try{p.mute();p.setVolume(0);p.playVideo();}catch(e){}
-      });
-    },1200);
-  });
-})();
-</script>
 
 </body>
 </html>
